@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  </head>
+  <body>
+    <h3>{{message}}</h3>
+    {% for book, author_name in books %}
+    <div> 
+      <h3>{{ book.title }} by {{ author_name }} <a href="/book/{{book.id}}/delete"><small>Delete</small></a></h3>
+    </div>
+    {% endfor %}
+    <div> 
+      <a href="/add_author">Add Author</a>
+      <a href="/add_book">Add Book</a>
+    </div>
+    <div>
+      <a href="{{ url_for('home', sort='title') }}">Sort by Title</a>
+      <a href="{{ url_for('home', sort='author') }}">Sort by Author Name</a>
+    </div>
+    <form action="/search" method="GET">
+      <input type="text" id="s" name="s">
+      <input type="submit" value="Search"> 
+    </form>
+  </body>
+</html>
